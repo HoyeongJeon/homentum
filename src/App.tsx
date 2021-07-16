@@ -1,23 +1,35 @@
-import React from "react";
-import { Clock } from "./Clock";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { TodoListItem } from "./TodoListItem";
 import { Todo } from "./types";
+import { TodoList } from "./TodoList";
+import { Clock } from "./Clock";
+import { Greeting } from "./Greeting";
 
-const todos: Array<Todo> = [
-  { text: "study react and typescript", complete: true },
-  { text: "sleep", complete: false },
-];
 const App: React.FC = () => {
+  // useEffect(() => {
+  //   //Component did mount
+  //   setInterval(tick, 1000);
+  //   //Component did unmount
+  //   return () => {
+  //     clearInterval(tick);
+  //   };
+  // }, []);
+
+  // const tick = () => {
+  //   return setTime(new Date());
+  // };
+
   return (
     <div className="App">
-      {/* <div className="Clock">
+      <div className="Clock">
         <Clock />
-      </div> */}
+      </div>
+      <div className="Greeting">
+        <Greeting />
+      </div>
       {/* Greeting */}
-      <>
-        <TodoListItem todo={todos[0]} />
-        <TodoListItem todo={todos[1]} />
-      </>
+      {/* Todo */}
       {/* Weather */}
       {/* Quotes */}
     </div>
