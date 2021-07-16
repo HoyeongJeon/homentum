@@ -1,25 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { TodoListItem } from "./TodoListItem";
-import { Todo } from "./types";
-import { TodoList } from "./TodoList";
-import { Clock } from "./Clock";
-import { Greeting } from "./Greeting";
+import { TodoListItem } from "./components/TodoListItem";
+import { TodoList } from "./components/TodoList";
+import { Clock } from "./components/Clock";
+import { Greeting } from "./components/Greeting";
+import { Todo } from "./components/Todo";
+import { TodoTask } from "./components/TodoTask";
+import "./App.css";
 
 const App: React.FC = () => {
-  // useEffect(() => {
-  //   //Component did mount
-  //   setInterval(tick, 1000);
-  //   //Component did unmount
-  //   return () => {
-  //     clearInterval(tick);
-  //   };
-  // }, []);
-
-  // const tick = () => {
-  //   return setTime(new Date());
-  // };
-
   return (
     <div className="App">
       <div className="Clock">
@@ -27,6 +16,9 @@ const App: React.FC = () => {
       </div>
       <div className="Greeting">
         <Greeting />
+      </div>
+      <div className="Todo">
+        <Todo />
       </div>
       {/* Greeting */}
       {/* Todo */}

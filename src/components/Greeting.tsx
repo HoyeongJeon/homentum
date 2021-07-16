@@ -1,23 +1,19 @@
-import React, { ChangeEvent } from "react";
-import { useEffect } from "react";
-import { useCallback } from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 export const Greeting: React.FC = () => {
   const USER_KEY = "User";
   const USER_LS = localStorage.getItem(USER_KEY);
   const [userInput, setUserInput] = useState<string>("");
 
-  const onUserChange = (e: any) => {
+  const onUserChange = useCallback((e: any) => {
     e.preventDefault();
     const name: string = e.target.value;
     setUserInput(name);
-  };
+  }, []);
 
-  const onUserSubmit = () => {
+  const onUserSubmit = useCallback(() => {
     localStorage.setItem(USER_KEY, userInput);
-  };
+  }, [userInput]);
   const getUser = () => {
     const userInit = localStorage.getItem(USER_KEY);
     if (userInit === null) {
