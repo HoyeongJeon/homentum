@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { TodoListItem } from "./components/TodoListItem";
-import { TodoList } from "./components/TodoList";
 import { Clock } from "./components/Clock";
 import { Greeting } from "./components/Greeting";
 import { Todo } from "./components/Todo";
-import { TodoTask } from "./components/TodoTask";
 import "./App.css";
 
 const App: React.FC = () => {

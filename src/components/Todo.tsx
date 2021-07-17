@@ -1,48 +1,64 @@
-import React, { ChangeEvent } from "react";
-import { useState } from "react";
-import { ITodo } from "../interface/interface";
-import { TodoTask } from "./TodoTask";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 
 export const Todo: React.FC = () => {
-  const [todo, setTodo] = useState<string>("");
-  const [todoList, setTodoList] = useState<ITodo[]>([]);
+  const TODOS_KEY = "todos";
+  const TODOS_LS = localStorage.getItem(TODOS_KEY);
+  const [input, setInput] = useState<string>("");
+  const [todoList, setTodoList] = useState<Array<string>>([]);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
+  const deleteBtn = (id: number) => {
+    console.log("I'm playing!");
+    const updatedTodos = todoList.filter((elem, ind) => {
+      return ind !== id;
+    });
+
+    setTodoList(updatedTodos);
   };
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    if (e.target.name === "todo") {
-      setTodo(e.target.value);
+  // TodoList에 아이템 넣기
+  const addItem = (e: any) => {
+    e.preventDefault();
+    if (!input) {
+      console.log("nothing");
+    } else {
+      setTodoList([...todoList, input]);
+      console.log(todoList);
+      setInput("");
     }
   };
-  const addTodo = (): void => {
-    const newTodo = { todo: todo };
-    setTodoList([...todoList, newTodo]);
-    setTodo("");
-    console.log(todoList);
+  // TodoList 전체 삭제
+  const removeAll = () => {
+    setTodoList([]);
   };
 
-  const deleteTodo = (todoToDelete: string): void => {
-    setTodoList(
-      todoList.filter((todo) => {
-        return todo.todo !== todoToDelete;
-      })
-    );
-  };
+  // Local Storage에 todo 넣기
+  useEffect(() => {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(todoList));
+  }, [todoList]);
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input value={todo} name="todo" onChange={handleChange} />
-        <button onClick={addTodo} name="btn">
-          Add!
-        </button>
-      </form>
-      <div className="TodoList">
-        {todoList.map((todo: ITodo, key: number) => {
-          return <TodoTask key={key} todo={todo} deleteTodo={deleteTodo} />;
+    <>
+      <div>
+        <form>
+          <input
+            type="text"
+            placeholder="What will you do today?"
+            onChange={(e) => setInput(e.target.value)}
+            value={input}
+          />
+          <button onClick={addItem}>🍎</button>
+        </form>
+      </div>
+      <div className="showTodo">
+        {todoList.map((elem, index) => {
+          return (
+            <div className="eachTodo" key={index}>
+              <h3> {elem}</h3>
+              <button onClick={() => deleteBtn(index)}>❌</button>
+            </div>
+          );
         })}
       </div>
-    </div>
+    </>
   );
 };
