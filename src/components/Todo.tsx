@@ -1,31 +1,39 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 export const Todo: React.FC = () => {
   const TODOS_KEY = "todos";
   const TODOS_LS = localStorage.getItem(TODOS_KEY);
   const [input, setInput] = useState<string>("");
-  const [todoList, setTodoList] = useState<Array<string>>([]);
+  // 새로고침 시 local storage 사라지게 하지 않기.
+  const [todoList, setTodoList] = useState<Array<string>>(
+    TODOS_LS ? JSON.parse(TODOS_LS) : []
+  );
 
-  const deleteBtn = (id: number) => {
-    console.log("I'm playing!");
-    const updatedTodos = todoList.filter((elem, ind) => {
-      return ind !== id;
-    });
-
-    setTodoList(updatedTodos);
-  };
+  const deleteBtn = useCallback(
+    (id: number) => {
+      const updatedTodos = todoList.filter((elem, ind) => {
+        return ind !== id;
+      });
+      console.log("I'm rerender~!");
+      setTodoList(updatedTodos);
+    },
+    [todoList]
+  );
 
   // TodoList에 아이템 넣기
-  const addItem = (e: any) => {
-    e.preventDefault();
-    if (!input) {
-      console.log("nothing");
-    } else {
-      setTodoList([...todoList, input]);
-      console.log(todoList);
-      setInput("");
-    }
-  };
+  const addItem = useCallback(
+    (e: any) => {
+      e.preventDefault();
+      if (!input) {
+        console.log("nothing");
+      } else {
+        setTodoList([...todoList, input]);
+        console.log(todoList);
+        setInput("");
+      }
+    },
+    [input, todoList]
+  );
   // TodoList 전체 삭제
   const removeAll = () => {
     setTodoList([]);
@@ -58,6 +66,9 @@ export const Todo: React.FC = () => {
             </div>
           );
         })}
+      </div>
+      <div>
+        <button onClick={removeAll}>It was a productive day!</button>
       </div>
     </>
   );
