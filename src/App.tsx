@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
 import { Clock } from "./components/Clock";
 import { Greeting } from "./components/Greeting";
 import { Todo } from "./components/Todo";
+import { Weather } from "./components/Weather";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -17,8 +17,9 @@ const App: React.FC = () => {
       <div className="Todo">
         <Todo />
       </div>
-      {/* Greeting */}
-      {/* Todo */}
+      <div>
+        <Weather />
+      </div>
       {/* Weather */}
       {/* Quotes */}
     </div>
