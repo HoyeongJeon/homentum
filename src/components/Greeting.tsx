@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import "./styles/Greeting.css";
 
 export const Greeting: React.FC = () => {
   const USER_KEY = "User";
@@ -41,7 +42,7 @@ export const Greeting: React.FC = () => {
 
   return (
     <>
-      <div>{getUser()}</div>
+      <div className="greetingUser">{getUser()}</div>
     </>
   );
 };

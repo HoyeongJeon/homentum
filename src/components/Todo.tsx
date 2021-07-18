@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import "./styles/Todo.css";
 
 export const Todo: React.FC = () => {
   const TODOS_KEY = "todos";

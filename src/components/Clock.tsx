@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./styles/Clock.css";
 
 export const Clock: React.FC = () => {
   let time: string = new Date().toLocaleTimeString();

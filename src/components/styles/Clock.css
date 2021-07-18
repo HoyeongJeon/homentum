@@ -1,0 +1,7 @@
+.Clock {
+  font-size: 36px;
+  font-weight: 800;
+  /* position: absolute; */
+  bottom: 150px;
+  left: 10px;
+}

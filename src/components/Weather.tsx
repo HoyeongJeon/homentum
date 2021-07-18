@@ -1,15 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "./styles/Weather.css";
+import { ICoords, IWeather } from "./Interfaces";
 
-interface ICoords {
-  lat: number;
-  lon: number;
-}
-
-interface IWeather {
-  name: string;
-  temp: number;
-}
 // api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={64779c24be2bccf0ecbb74005b638849} => Open Weather Api
 export const Weather: React.FC = () => {
   const API_KEY = "64779c24be2bccf0ecbb74005b638849";
@@ -31,8 +24,6 @@ export const Weather: React.FC = () => {
       )
         .then((res) => res.json())
         .then((result) => {
-          console.log(result);
-          // result.name;
           setWeather({
             name: result.name,
             temp: result.main.temp,
@@ -59,7 +50,7 @@ export const Weather: React.FC = () => {
       localStorage.setItem(COORDS_KEY, JSON.stringify(coords));
       // currentCoords.filter(weather: any => weather[0])
     });
-  }, [coords]);
+  }, []);
   return (
     <div className="Weather">
       You are in {weather.name}, It's {weather.temp} C
