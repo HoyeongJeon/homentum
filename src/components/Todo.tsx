@@ -62,13 +62,15 @@ export const Todo: React.FC = () => {
         {todoList.map((elem, index) => {
           return (
             <div className="eachTodo" key={index}>
-              <h3> {elem}</h3>
-              <button onClick={() => deleteBtn(index)}>❌</button>
+              <h3>
+                <button onClick={() => deleteBtn(index)}>❌</button>
+                {elem}
+              </h3>
             </div>
           );
         })}
       </div>
-      <div>
+      <div className="eachTodo__removeAll">
         <button onClick={removeAll}>It was a productive day!</button>
       </div>
     </>

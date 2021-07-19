@@ -1,18 +1,20 @@
 #root {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: white;
 }
 
 .App {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
 }
 
 .Greeting {

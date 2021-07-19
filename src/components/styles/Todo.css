@@ -1,0 +1,11 @@
+.eachTodo button {
+  margin-right: 10px;
+  background-color: transparent;
+  border-width: 0;
+}
+
+.eachTodo__removeAll button {
+  background-color: transparent;
+  border-width: 0;
+  color: white;
+}

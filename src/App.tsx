@@ -4,6 +4,7 @@ import { Greeting } from "./components/Greeting";
 import { Todo } from "./components/Todo";
 import { Weather } from "./components/Weather";
 import { Quotes } from "./components/Quotes";
+import { Background } from "./components/Background";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -23,6 +24,9 @@ const App: React.FC = () => {
       </div>
       <div>
         <Quotes />
+      </div>
+      <div className="Background">
+        <Background />
       </div>
       {/* Quotes */}
       {/* Background */}
