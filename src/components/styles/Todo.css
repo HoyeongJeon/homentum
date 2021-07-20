@@ -4,8 +4,49 @@
   border-width: 0;
 }
 
-.eachTodo__removeAll button {
+.eachTodo h3 {
+  margin: 5px;
+}
+
+.Todo__form > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachTodo__removeAll button,
+.Todo__form > form > button {
   background-color: transparent;
   border-width: 0;
   color: white;
+  outline-width: 0;
+}
+
+.Todo__form > form > input {
+  border: none;
+  background-color: transparent;
+  outline-width: 0;
+  color: white;
+  font-size: 18px;
+  margin-right: 10px;
+  padding: 0;
+  width: 200px;
+}
+
+.Todo__form > form > input::placeholder {
+  color: white;
+  opacity: 0.7;
+}
+
+.eachTodo__removeAll button {
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eachTodo__removeAll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

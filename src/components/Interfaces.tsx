@@ -10,4 +10,5 @@ export interface ICoords {
 export interface IWeather {
   name: string;
   temp: number;
+  icon: string;
 }

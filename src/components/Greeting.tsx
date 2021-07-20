@@ -23,6 +23,7 @@ export const Greeting: React.FC = () => {
           <h1>Welcome!</h1>
           <form onSubmit={onUserSubmit}>
             <input
+              className="greeting__input"
               type="text"
               placeholder="What is your name?"
               value={userInput}

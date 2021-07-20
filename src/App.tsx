@@ -9,28 +9,33 @@ import "./App.css";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <div className="Clock">
-        <Clock />
-      </div>
-      <div className="Greeting">
-        <Greeting />
-      </div>
-      <div className="Todo">
-        <Todo />
-      </div>
+    <>
       <div>
         <Weather />
+      </div>
+      <div className="App">
+        <div className="Clock">
+          <Clock />
+        </div>
+        <div className="Greeting">
+          <Greeting />
+        </div>
+        <div className="Todo">
+          <Todo />
+        </div>
+        <Background />
+        {/* <div>
+          <Weather />
+        </div> */}
+        {/* <div className="Background">
+          // <Background />
+        </div> */}
+        {/* Quotes */}
       </div>
       <div>
         <Quotes />
       </div>
-      <div className="Background">
-        <Background />
-      </div>
-      {/* Quotes */}
-      {/* Background */}
-    </div>
+    </>
   );
 };
 

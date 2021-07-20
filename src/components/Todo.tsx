@@ -47,7 +47,7 @@ export const Todo: React.FC = () => {
 
   return (
     <>
-      <div>
+      <div className="Todo__form">
         <form>
           <input
             type="text"
@@ -71,7 +71,7 @@ export const Todo: React.FC = () => {
         })}
       </div>
       <div className="eachTodo__removeAll">
-        <button onClick={removeAll}>It was a productive day!</button>
+        <button onClick={removeAll}>Well done 💖</button>
       </div>
     </>
   );

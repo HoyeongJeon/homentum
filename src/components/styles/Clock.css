@@ -5,3 +5,7 @@
   bottom: 150px;
   left: 10px;
 }
+
+.Clock h1 {
+  margin: 20px;
+}

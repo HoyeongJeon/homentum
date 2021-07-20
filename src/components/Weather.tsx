@@ -11,9 +11,13 @@ export const Weather: React.FC = () => {
   const [coords, setCoords] = useState<Array<ICoords>>(
     COORDS_LS ? JSON.parse(COORDS_LS) : []
   );
-  const [weather, setWeather] = useState<IWeather>({ name: "", temp: 0 });
+  const [weather, setWeather] = useState<IWeather>({
+    name: "",
+    temp: 0,
+    icon: "",
+  });
   const currentCoords = JSON.parse(COORDS_LS);
-
+  const weather_icon = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
   // 날씨 받아오기.
   async function getWeather() {
     if (COORDS_LS === "[]") {
@@ -24,9 +28,11 @@ export const Weather: React.FC = () => {
       )
         .then((res) => res.json())
         .then((result) => {
+          console.log(result);
           setWeather({
             name: result.name,
             temp: result.main.temp,
+            icon: result.weather[0].icon,
           });
         })
         .catch(() => {
@@ -34,6 +40,7 @@ export const Weather: React.FC = () => {
         });
     }
   }
+  console.log();
 
   // 처음 렌더링 시 , 로컬스토리지에 lat, lon이 저장되어 있다면, 날씨를 받아오게 하기 위함.
   useEffect(() => {
@@ -52,8 +59,18 @@ export const Weather: React.FC = () => {
     });
   }, []);
   return (
-    <div className="Weather">
-      You are in {weather.name}, It's {weather.temp} C
-    </div>
+    <>
+      <div className="Weather">
+        <span>
+          {" "}
+          {weather.name} <br />
+        </span>
+        <span>It's {weather.temp} C</span>
+        <div className="Weather__img">
+          {" "}
+          <img src={weather_icon} />
+        </div>
+      </div>
+    </>
   );
 };
