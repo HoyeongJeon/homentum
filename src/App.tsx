@@ -10,9 +10,7 @@ import "./App.css";
 const App: React.FC = () => {
   return (
     <>
-      <div>
-        <Weather />
-      </div>
+      <Weather />
       <div className="App">
         <div className="Clock">
           <Clock />
@@ -32,9 +30,7 @@ const App: React.FC = () => {
         </div> */}
         {/* Quotes */}
       </div>
-      <div>
-        <Quotes />
-      </div>
+      <Quotes />
     </>
   );
 };

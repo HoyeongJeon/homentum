@@ -1,3 +1,10 @@
 .Weather span {
   text-shadow: 1px 1px rgba(0, 0, 0, 1);
 }
+
+.Weather {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 3px;
+  text-align: center;
+}

@@ -4,9 +4,6 @@ import "./styles/Background.css";
 
 export const Background: React.FC = () => {
   return (
-    <img
-      className="Bg-img"
-      src="https://source.unsplash.com/random/1900x1080"
-    />
+    <img className="Bg-img" src="https://source.unsplash.com/random/1600x900" />
   );
 };
