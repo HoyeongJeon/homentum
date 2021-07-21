@@ -42,13 +42,7 @@ export const Weather: React.FC = () => {
   }
   console.log();
 
-  // 처음 렌더링 시 , 로컬스토리지에 lat, lon이 저장되어 있다면, 날씨를 받아오게 하기 위함.
-  useEffect(() => {
-    if (COORDS_LS !== null) getWeather();
-  }, []);
-
-  // 처음 렌더링 될 때 위치정보를 받아오기 위함.
-  useEffect(() => {
+  const weatherInfo = () => {
     navigator.geolocation.watchPosition((position) => {
       let lat = position.coords.latitude;
       let lon = position.coords.longitude;
@@ -57,12 +51,19 @@ export const Weather: React.FC = () => {
       localStorage.setItem(COORDS_KEY, JSON.stringify(coords));
       // currentCoords.filter(weather: any => weather[0])
     });
+  };
+  // 처음 렌더링 시 , 로컬스토리지에 lat, lon이 저장되어 있다면, 날씨를 받아오게 하기 위함.
+  useEffect(() => {
+    if (COORDS_LS !== null) getWeather();
   }, []);
+
+  // 처음 렌더링 될 때 위치정보를 받아오기 위함.
+  useEffect(() => {});
   return (
     <>
       <div className="Weather">
         <span>
-          {" "}
+          {COORDS_LS === "[]" && weatherInfo()}
           {weather.name} <br />
         </span>
         <span>It's {weather.temp} C</span>
