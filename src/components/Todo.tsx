@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import "./styles/Todo.css";
 
 export const Todo: React.FC = () => {
@@ -9,6 +9,8 @@ export const Todo: React.FC = () => {
   const [todoList, setTodoList] = useState<Array<string>>(
     TODOS_LS ? JSON.parse(TODOS_LS) : []
   );
+
+  console.log("rerender!");
 
   const deleteBtn = useCallback(
     (id: number) => {
@@ -22,23 +24,22 @@ export const Todo: React.FC = () => {
   );
 
   // TodoList에 아이템 넣기
-  const addItem = useCallback(
-    (e: any) => {
+  const addItem = useMemo(
+    () => (e: any) => {
       e.preventDefault();
       if (!input) {
-        console.log("nothing");
+        return;
       } else {
         setTodoList([...todoList, input]);
-        console.log(todoList);
         setInput("");
       }
     },
     [input, todoList]
   );
   // TodoList 전체 삭제
-  const removeAll = () => {
+  const removeAll = useCallback(() => {
     setTodoList([]);
-  };
+  }, []);
 
   // Local Storage에 todo 넣기
   useEffect(() => {
@@ -52,7 +53,7 @@ export const Todo: React.FC = () => {
           <input
             type="text"
             placeholder="What will you do today?"
-            onChange={(e) => setInput(e.target.value)}
+            onChange={useCallback((e) => setInput(e.target.value), [])}
             value={input}
           />
           <button onClick={addItem}>🍎</button>

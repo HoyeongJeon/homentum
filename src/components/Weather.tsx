@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./styles/Weather.css";
 import { ICoords, IWeather } from "./Interfaces";
 
@@ -21,7 +21,7 @@ export const Weather: React.FC = () => {
   // 날씨 받아오기.
   async function getWeather() {
     if (COORDS_LS === "[]") {
-      return;
+      console.log("h2llo");
     } else {
       await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${currentCoords[0].lat}&lon=${currentCoords[0].lon}&appid=${API_KEY}&units=metric`
@@ -40,30 +40,37 @@ export const Weather: React.FC = () => {
         });
     }
   }
-  console.log();
 
-  const weatherInfo = () => {
-    navigator.geolocation.watchPosition((position) => {
-      let lat = position.coords.latitude;
-      let lon = position.coords.longitude;
-      const coordsBox = { lat: lat, lon: lon };
-      setCoords([...coords, coordsBox]);
-      localStorage.setItem(COORDS_KEY, JSON.stringify(coords));
-      // currentCoords.filter(weather: any => weather[0])
-    });
-  };
   // 처음 렌더링 시 , 로컬스토리지에 lat, lon이 저장되어 있다면, 날씨를 받아오게 하기 위함.
   useEffect(() => {
     if (COORDS_LS !== null) getWeather();
   }, []);
 
   // 처음 렌더링 될 때 위치정보를 받아오기 위함.
-  useEffect(() => {});
+  useEffect(() => {
+    navigator.geolocation.watchPosition((position) => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      const coordsBox = { lat: lat, lon: lon };
+      setCoords([...coords, coordsBox]);
+      localStorage.setItem(COORDS_KEY, JSON.stringify(coords));
+    });
+  }, []);
+
+  useCallback(() => {
+    navigator.geolocation.watchPosition((position) => {
+      let lat = position.coords.latitude;
+      let lon = position.coords.longitude;
+      const coordsBox = { lat: lat, lon: lon };
+      setCoords([...coords, coordsBox]);
+      localStorage.setItem(COORDS_KEY, JSON.stringify(coords));
+      console.log("hi");
+    });
+  }, [coords]);
   return (
     <>
       <div className="Weather">
         <span>
-          {COORDS_LS === "[]" && weatherInfo()}
           {weather.name} <br />
         </span>
         <span>It's {weather.temp} C</span>
