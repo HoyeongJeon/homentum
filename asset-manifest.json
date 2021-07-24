@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Homentum/static/css/main.5d7846ca.chunk.css",
-    "main.js": "/Homentum/static/js/main.640d6474.chunk.js",
-    "main.js.map": "/Homentum/static/js/main.640d6474.chunk.js.map",
-    "runtime-main.js": "/Homentum/static/js/runtime-main.bd9537e6.js",
-    "runtime-main.js.map": "/Homentum/static/js/runtime-main.bd9537e6.js.map",
-    "static/js/2.397afc29.chunk.js": "/Homentum/static/js/2.397afc29.chunk.js",
-    "static/js/2.397afc29.chunk.js.map": "/Homentum/static/js/2.397afc29.chunk.js.map",
-    "index.html": "/Homentum/index.html",
-    "static/css/main.5d7846ca.chunk.css.map": "/Homentum/static/css/main.5d7846ca.chunk.css.map",
-    "static/js/2.397afc29.chunk.js.LICENSE.txt": "/Homentum/static/js/2.397afc29.chunk.js.LICENSE.txt"
+    "main.css": "/homentum/static/css/main.5d7846ca.chunk.css",
+    "main.js": "/homentum/static/js/main.640d6474.chunk.js",
+    "main.js.map": "/homentum/static/js/main.640d6474.chunk.js.map",
+    "runtime-main.js": "/homentum/static/js/runtime-main.a3b5049b.js",
+    "runtime-main.js.map": "/homentum/static/js/runtime-main.a3b5049b.js.map",
+    "static/js/2.397afc29.chunk.js": "/homentum/static/js/2.397afc29.chunk.js",
+    "static/js/2.397afc29.chunk.js.map": "/homentum/static/js/2.397afc29.chunk.js.map",
+    "index.html": "/homentum/index.html",
+    "static/css/main.5d7846ca.chunk.css.map": "/homentum/static/css/main.5d7846ca.chunk.css.map",
+    "static/js/2.397afc29.chunk.js.LICENSE.txt": "/homentum/static/js/2.397afc29.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.bd9537e6.js",
+    "static/js/runtime-main.a3b5049b.js",
     "static/js/2.397afc29.chunk.js",
     "static/css/main.5d7846ca.chunk.css",
     "static/js/main.640d6474.chunk.js"
